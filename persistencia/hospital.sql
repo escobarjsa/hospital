@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-07-2020 a las 19:05:32
+-- Tiempo de generación: 29-07-2020 a las 04:41:17
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -34,7 +34,7 @@ CREATE TABLE `administrador` (
   `apellido` varchar(45) NOT NULL,
   `correo` varchar(45) NOT NULL,
   `clave` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `administrador`
@@ -57,7 +57,7 @@ CREATE TABLE `cita` (
   `medico_idmedico` int(11) NOT NULL,
   `paciente_idpaciente` int(11) NOT NULL,
   `consultorio_idconsultorio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE `cita` (
 CREATE TABLE `consultorio` (
   `idconsultorio` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,21 @@ CREATE TABLE `consultorio` (
 CREATE TABLE `especialidad` (
   `idespecialidad` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historia_clinica`
+--
+
+CREATE TABLE `historia_clinica` (
+  `idhistoria` int(11) NOT NULL,
+  `diagnostico` varchar(100) NOT NULL,
+  `tratamiento` varchar(100) NOT NULL,
+  `observaciones` varchar(100) NOT NULL,
+  `cita_idcita` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -95,7 +109,7 @@ CREATE TABLE `medico` (
   `clave` varchar(45) NOT NULL,
   `tarjetaprofesional` varchar(45) NOT NULL,
   `especialidad_idespecialidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -114,20 +128,17 @@ CREATE TABLE `paciente` (
   `telefono` varchar(45) DEFAULT NULL,
   `direccion` varchar(45) DEFAULT NULL,
   `foto` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
 INSERT INTO `paciente` (`idpaciente`, `nombre`, `apellido`, `correo`, `clave`, `cedula`, `estado`, `telefono`, `direccion`, `foto`) VALUES
-(1, 'Pedro', 'Picapiedra', '10@10.com', 'd3d9446802a44259755d38e6d163e820', '10', 0, NULL, NULL, NULL),
-(2, 'Pablo', 'Marmol', '20@20.com', '98f13708210194c475687be6106a3b84', '20', 0, NULL, NULL, NULL),
-(3, 'Homero', 'Simpson', '30@30.com', '34173cb38f07f89ddbebc2ac9128303f', '30', 0, NULL, NULL, NULL),
-(4, 'Clark', 'Kent', '40@40.com', 'd645920e395fedad7bbbed0eca3fe2e0', '40', 1, NULL, NULL, NULL),
-(5, 'Bruce', 'Wane', '50@50.com', '202cb962ac59075b964b07152d234b70', '50', 0, NULL, NULL, NULL),
-(6, 'Lex', 'Lutor', '60@60.com', '072b030ba126b2f4b2374f342be9ed44', '60', 0, NULL, NULL, NULL),
-(7, 'prueba', 'prueba', 'prueba@paciente.com', '81dc9bdb52d04dc20036dbd8313ed055', '102354', 1, NULL, NULL, NULL);
+(1, 'pedro', 'paez', 'pedro@paciente.com', 'c6cc8094c2dc07b700ffcc36d64e2138', '1234', 1, NULL, NULL, NULL),
+(2, 'Pablo', 'Benito', 'pablo@paciente.com', '7e4b64eb65e34fdfad79e623c44abd94', '1234', 0, NULL, NULL, NULL),
+(3, 'Lex', 'Lutor', 'lex@paciente.com', 'b067b3d3054d8868c950e1946300a3f4', '1234', 1, NULL, NULL, NULL),
+(4, 'Juan', 'Rodriguez', 'juan@paciente.com', 'a94652aa97c7211ba8954dd15a3cf838', '123', 0, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -144,9 +155,9 @@ ALTER TABLE `administrador`
 --
 ALTER TABLE `cita`
   ADD PRIMARY KEY (`idcita`),
-  ADD KEY `fk_cita_medico1_idx` (`medico_idmedico`),
-  ADD KEY `fk_cita_paciente1_idx` (`paciente_idpaciente`),
-  ADD KEY `fk_cita_consultorio1_idx` (`consultorio_idconsultorio`);
+  ADD KEY `fk_cita_medico1` (`medico_idmedico`),
+  ADD KEY `fk_cita_paciente1` (`paciente_idpaciente`),
+  ADD KEY `fk_cita_consultorio1` (`consultorio_idconsultorio`);
 
 --
 -- Indices de la tabla `consultorio`
@@ -161,11 +172,18 @@ ALTER TABLE `especialidad`
   ADD PRIMARY KEY (`idespecialidad`);
 
 --
+-- Indices de la tabla `historia_clinica`
+--
+ALTER TABLE `historia_clinica`
+  ADD PRIMARY KEY (`idhistoria`),
+  ADD KEY `fk_historia_clinica_cita1` (`cita_idcita`);
+
+--
 -- Indices de la tabla `medico`
 --
 ALTER TABLE `medico`
   ADD PRIMARY KEY (`idmedico`),
-  ADD KEY `fk_medico_especialidad_idx` (`especialidad_idespecialidad`);
+  ADD KEY `fk_medico_especialidad` (`especialidad_idespecialidad`);
 
 --
 -- Indices de la tabla `paciente`
@@ -187,31 +205,37 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `consultorio`
 --
 ALTER TABLE `consultorio`
-  MODIFY `idconsultorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idconsultorio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `especialidad`
 --
 ALTER TABLE `especialidad`
-  MODIFY `idespecialidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idespecialidad` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `historia_clinica`
+--
+ALTER TABLE `historia_clinica`
+  MODIFY `idhistoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `idmedico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idmedico` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `idpaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idpaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -224,6 +248,12 @@ ALTER TABLE `cita`
   ADD CONSTRAINT `fk_cita_consultorio1` FOREIGN KEY (`consultorio_idconsultorio`) REFERENCES `consultorio` (`idconsultorio`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_cita_medico1` FOREIGN KEY (`medico_idmedico`) REFERENCES `medico` (`idmedico`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_cita_paciente1` FOREIGN KEY (`paciente_idpaciente`) REFERENCES `paciente` (`idpaciente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `historia_clinica`
+--
+ALTER TABLE `historia_clinica`
+  ADD CONSTRAINT `fk_historia_clinica_cita1` FOREIGN KEY (`cita_idcita`) REFERENCES `cita` (`idcita`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `medico`

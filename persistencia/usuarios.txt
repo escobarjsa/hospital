@@ -1,0 +1,20 @@
+administrador
+correo: jonathan@admin.com
+pass: 12345
+
+correo: admin@admin.com
+pass: admin
+_________________________________
+Paciente
+correo: pedro@paciente.com
+pass: pedro
+
+correo: pablo@paciente.com
+pass: pablo
+
+correo: lex@paciente.com
+pass: lex
+
+correo: juan@paciente.com
+pass: juan
+_________________________________

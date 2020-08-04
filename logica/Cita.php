@@ -36,7 +36,7 @@ class Cita {
         return $this -> consultorio_idconsultorio;
     }
 
-    function Cita ( $idcita = '', $fecha = '', $hora = '', $medico_idmedico = '', $paciente_idpaciente = '', $consultorio_idconsultorio = '' ) {
+    function Cita ($idcita="", $fecha="", $hora="", $medico_idmedico="", $paciente_idpaciente="", $consultorio_idconsultorio="") {
         $this -> idcita = $idcita;
         $this -> fecha = $fecha;
         $this -> hora = $hora;

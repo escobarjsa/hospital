@@ -25,31 +25,16 @@ $medico->consultar();
                 <td><?php echo $medico->getApellido(); ?></td>
             </tr>
             <tr>
-                <th width="20%">Foto</th>
-                <?php
-echo "<td>" . (($medico->getFoto() !== "" && file_exists("img/" . $medico->getFoto() . "") && $medico->getFoto()) ? "<img src='img/" . $medico->getFoto() . "' width='300px'/>" :
-    "<i class='fas fa-user-tie fa-3x'></i>") . "</td>";
-?>
-            </tr>
-            <tr>
-                <th width="20%">Cedula</th>
-                <td><?php echo $medico->getCedula(); ?></td>
-            </tr>
-            <tr>
                 <th width="20%">Correo</th>
                 <td><?php echo $medico->getCorreo(); ?></td>
             </tr>
             <tr>
-                <th width="20%">Direccion</th>
-                <td><?php echo $medico->getDireccion(); ?></td>
+                <th width="20%">Tarjeta profesional</th>
+                <td><?php echo $medico->getTarjetaProfesional(); ?></td>
             </tr>
             <tr>
-                <th width="20%">Telefono</th>
-                <td><?php echo $medico->getTelefono(); ?></td>
-            </tr>
-            <tr>
-                <th width="20%">Estado</th>
-                <td><?php echo (($medico->getEstado() == 1) ? "<i class='fas fa-check-circle fa-2x text-success'></i>" : "<i class='fas fa-times-circle fa-2x   text-danger'></i>"); ?></td>
+                <th width="20%">Especialidad</th>
+                <td><?php echo $medico->getEspecialidad_Idespecialidad(); ?></td>
             </tr>
         </tbody>
     </table>

@@ -1,6 +1,6 @@
 	<div class="container">
 		<div class="row">
-			<?php include 'encabezado.php';?>
+			<?php include 'encabezado.php'; ?>
 		</div>
 		<div class="row">
 			<div class="col-8">
@@ -16,16 +16,16 @@
 					<div class="card-header bg-primary text-white">Autenticacion</div>
 					<div class="card-body">
 						<?php
-if (isset($_GET['correo'])) {
-    echo "<div class='alert alert-danger' role='alert'>";
-    echo "Correo o clave incorrectos";
-    echo "</div>";
-} elseif (isset($_GET['estado'])) {
-    echo "<div class='alert alert-danger' role='alert'>";
-    echo "El usuario no esta activo aun";
-    echo "</div>";
-}
-?>
+						if (isset($_GET['correo'])) {
+							echo "<div class='alert alert-danger' role='alert'>";
+							echo "Correo o clave incorrectos";
+							echo "</div>";
+						} elseif (isset($_GET['estado'])) {
+							echo "<div class='alert alert-danger' role='alert'>";
+							echo "El usuario no esta activo aun";
+							echo "</div>";
+						}
+						?>
 
 						<form action="index.php?pid=<?php echo base64_encode("presentacion/autenticar.php") ?>&nos=true" method="post">
 							<div class="form-group">
@@ -37,6 +37,7 @@ if (isset($_GET['correo'])) {
 							<button type="submit" class="btn btn-primary">Autenticar</button>
 						</form>
 						<a href=<?php echo "index.php?pid=" . base64_encode("presentacion/registro.php") . "&nos=true" ?>>Registrese Gratis</a>
+						<a href=<?php echo "index.php?pid=" . base64_encode("presentacion/olvidePassword.php") . "&nos=true" ?>><br>¿Olvidaste tu Contraseña?<br></a>
 					</div>
 				</div>
 			</div>

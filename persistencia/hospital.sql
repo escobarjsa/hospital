@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hospital`
 --
+use hospital;
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,15 @@ CREATE TABLE `cita` (
   `consultorio_idconsultorio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `cita`
+--
+
+INSERT INTO `cita` (`idcita`, `fecha`, `hora`, `medico_idmedico`, `paciente_idpaciente`, `consultorio_idconsultorio`) VALUES
+(1, '2020-03-13', '03:15:00', 1, 4, 1),
+(2, '2020-03-13', '03:20:00', 3, 1, 3),
+(3, '2020-03-13', '03:30:00', 2, 3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -70,6 +80,15 @@ CREATE TABLE `consultorio` (
   `nombre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `consultorio`
+--
+
+INSERT INTO `consultorio` (`idconsultorio`, `nombre`) VALUES
+(1, 'Consultorio Medicina General'),
+(2, 'Consultorio Pediatría'),
+(3, 'Consultorio Neurologia');
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +99,15 @@ CREATE TABLE `especialidad` (
   `idespecialidad` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `especialidad`
+--
+
+INSERT INTO `especialidad` (`idespecialidad`, `nombre`) VALUES
+(1, 'Medico General'),
+(2, 'Pediatría'),
+(3, 'Neurología');
 
 -- --------------------------------------------------------
 
@@ -100,8 +128,8 @@ CREATE TABLE `historia_clinica` (
 --
 -- Estructura de tabla para la tabla `medico`
 --
-
-CREATE TABLE `medico` (
+  
+  CREATE TABLE `medico` (
   `idmedico` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
@@ -109,7 +137,15 @@ CREATE TABLE `medico` (
   `clave` varchar(45) NOT NULL,
   `tarjetaprofesional` varchar(45) NOT NULL,
   `especialidad_idespecialidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  --
+-- Volcado de datos para la tabla `medico`
+--
+
+INSERT INTO `medico` (`idmedico`, `nombre`, `apellido`, `correo`, `clave`, `tarjetaprofesional`, `especialidad_idespecialidad`) VALUES
+(1, 'Diego', 'Fernando', '1@1.com', '1', 'Tarjeta Profesional', 1),
+(2, 'Paula', 'Leon', '2@2.com', '2', 'Tarjeta Profesional', 2),
+(3, 'Juan', 'Santos', '3@3.com', '3', 'Tarjeta Profesional', 3);
 
 -- --------------------------------------------------------
 

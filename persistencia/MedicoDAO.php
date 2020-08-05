@@ -26,6 +26,12 @@ class MedicoDAO {
                 values ('" . $this->nombre . "', '" . $this->apellido . "', '" . $this->correo . "', md5('" . $this->clave . "'), '" . $this->tarjetaprofesional . "', '" . $this->especialidad_idespecialidad . "')";
     }
 
+    function autenticar() {
+        return "SELECT idmedico
+                FROM medico
+                WHERE correo = '" . $this->correo . "' and clave = '" . $this->clave . "'";
+    }
+
     function actualizar() {
         return "update medico set
                 nombre = '" . $this -> nombre . "',

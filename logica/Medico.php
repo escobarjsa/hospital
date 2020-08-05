@@ -17,7 +17,7 @@ class Medico extends Persona {
 	}
 
 	function Medico($id = '', $nombre = '', $apellido = '', $correo = '', $clave = '', $tarjetaprofesional = '', $especialidad_idespecialidad = '') {
-		$this->Persona($id, $nombre, $apellido, $correo, $clave);
+		parent::__construct($id, $nombre, $apellido, $correo, $clave);
 		$this->tarjetaprofesional = $tarjetaprofesional;
 		$this->especialidad_idespecialidad = $especialidad_idespecialidad;
 		$this->conexion = new Conexion();
@@ -47,6 +47,21 @@ class Medico extends Persona {
 			return true;
 		}
 	}
+
+	function autenticar() {
+        $this->conexion->abrir();
+        echo $this->medicoDAO->autenticar();
+        $this->conexion->ejecutar( $this->medicoDAO->autenticar() );
+        if ( $this->conexion->numFilas() == 1 ) {
+            $resultado = $this->conexion->extraer();
+            $this->id = $resultado[0];
+            $this->conexion->cerrar();
+            return true;
+        } else {
+            $this->conexion->cerrar();
+            return false;
+        }
+    }
 
 	function consultar() {
 		$this->conexion->abrir();

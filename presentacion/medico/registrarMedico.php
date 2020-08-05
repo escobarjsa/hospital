@@ -20,7 +20,7 @@ if (isset($_POST["registrar"])) {
 	if ($especialidad != "Seleccionar Especialidad") {
 		$espe = new Especialidad("", $_POST["especialidad"]);
 		$espe->consultar();
-		$medico = new Medico("", $nombre, $apellido, $correo, $clave, $espe->getId());
+		$medico = new Medico("", $nombre, $apellido, $correo, $clave, $espe->getIdespecialidad());
 		if (!$medico->existeCorreo()) {
 
 			$medico->registrar();

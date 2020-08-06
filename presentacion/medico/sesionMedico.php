@@ -1,7 +1,8 @@
 <?php
+include 'logica/Medico.php';
+include 'presentacion/medico/menuMedico.php';
 $medico = new Medico($_SESSION['id']);
 $medico->consultar();
-include 'presentacion/medico/menuMedico.php';
 ?>
 
 <div class="container mt-4">

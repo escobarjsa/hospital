@@ -1,31 +1,21 @@
-<nav class="navbar is-white">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="index.php?pid=<?php echo base64_encode("presentacion/medico/sesionMedico.php") ?>">
-      <img src="img/Logo.png" alt="Logotipo perron" width="65px" height="35px">
-      <span class="navbar-text">Clinica</span>
-    </a>
-    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div class="navbar-end">
-    <div class="navbar-item">
-      <div class="field is-grouped">
-        <p class="control">
-          <span class="navbar-text">
+<<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand"
+		href="index.php"><i
+		class="fas fa-home"></i></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+
+			<li class="nav-item"><a class="nav-link" href="index.php">Salida</a>
+			</li>
+		</ul>
+		<span class="navbar-text">
             Medico <?php echo $medico->getEspecialidad_Idespecialidad() . " : " . $medico->getNombre() . " " . $medico->getApellido() ?> </span>
-        </p>
-        <p class="control">
-          <a class="bd-tw-button button" href="index.php">
-            <span>
-              Salida
-            </span>
-          </a>
-        </p>
-      </div>
-    </div>
   </div>
 </nav>
 <div class="row">

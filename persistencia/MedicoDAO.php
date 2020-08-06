@@ -10,6 +10,11 @@ class MedicoDAO {
     private $tarjetaprofesional;
     private $especialidad_idespecialidad;
 
+    function __construct()
+    {
+        
+    }
+
     function MedicoDAO( $id = '', $nombre = '', $apellido = '', $correo = '', $clave = '', $tarjetaprofesional = '', $especialidad_idespecialidad = '' ) {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -26,10 +31,12 @@ class MedicoDAO {
                 values ('" . $this->nombre . "', '" . $this->apellido . "', '" . $this->correo . "', md5('" . $this->clave . "'), '" . $this->tarjetaprofesional . "', '" . $this->especialidad_idespecialidad . "')";
     }
 
-    function autenticar() {
+    function autenticar($pCorreo, $pClave) 
+    {
+        error_log("correo: " . $pCorreo . ", clave: " . $pClave);
         return "SELECT idmedico
                 FROM medico
-                WHERE correo = '" . $this->correo . "' and clave = '" . $this->clave . "'";
+                WHERE correo = '" . $pCorreo . "' and clave = '" . $pClave . "'";
     }
 
     function actualizar() {
@@ -41,10 +48,10 @@ class MedicoDAO {
                 where idmedico=" . $this -> id;
     }
 
-    function consultar() {
+    function consultar($id) {
         return "select nombre, apellido, correo,  tarjetaprofesional,  especialidad_idespecialidad
                 from medico
-                where idmedico =" . $this -> id;
+                where idmedico =" . $id;
     }
 
     function existeCorreo() {
@@ -52,7 +59,7 @@ class MedicoDAO {
                 where correo = '" . $this->correo . "'";
     }
 
-    function buscarPaciente( $filtro ) {
+    function buscarMedico( $filtro ) {
         return "select idmedico,nombre, apellido, correo,  tarjetaprofesional,  especialidad_idespecialidad
                 from medico
                 where  nombre like '%" . $filtro . "%' or

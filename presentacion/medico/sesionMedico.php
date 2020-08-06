@@ -1,8 +1,8 @@
 <?php
 include 'logica/Medico.php';
+$medico = new Medico();
+$medico->consultar($_SESSION['id']);
 include 'presentacion/medico/menuMedico.php';
-$medico = new Medico($_SESSION['id']);
-$medico->consultar();
 ?>
 
 <div class="container mt-4">
@@ -18,7 +18,7 @@ $medico->consultar();
             </div>
         </div>
         <?php
-$solicitud = new Solicitud("", "", "", $_SESSION["id"]);
+/*$solicitud = new Solicitud("", "", "", $_SESSION["id"]);
 $solicitudes = $solicitud->consultarSolicitudes();
 if (count($solicitudes) != 0) {
 	echo "<div class='col-6 mt-4'>
@@ -32,9 +32,8 @@ if (count($solicitudes) != 0) {
                 </div>
             </article>
             </div>";
-}
+}*/
 
 ?>
     </div>
-</div>
 </div>

@@ -16,7 +16,16 @@ class Medico extends Persona {
 		return $this->especialidad_idespecialidad;
 	}
 
-	function Medico($id = '', $nombre = '', $apellido = '', $correo = '', $clave = '', $tarjetaprofesional = '', $especialidad_idespecialidad = '') {
+	function __construct()
+	{
+		error_log("constructorMedico");
+		$this->conexion = new Conexion();
+		$this->medicoDAO = new MedicoDAO();
+	}
+
+	function Medico($id, $nombre, $apellido, $correo, $clave, $tarjetaprofesional, $especialidad_idespecialidad) 
+	{
+		error_log("constructorMedico SUPER");
 		parent::__construct($id, $nombre, $apellido, $correo, $clave);
 		$this->tarjetaprofesional = $tarjetaprofesional;
 		$this->especialidad_idespecialidad = $especialidad_idespecialidad;
@@ -48,10 +57,11 @@ class Medico extends Persona {
 		}
 	}
 
-	function autenticar() {
-        $this->conexion->abrir();
-        echo $this->medicoDAO->autenticar();
-        $this->conexion->ejecutar( $this->medicoDAO->autenticar() );
+	function autenticar($correo, $clave) 
+	{
+		$this->conexion->abrir();
+		error_log("1");
+        $this->conexion->ejecutar( $this->medicoDAO->autenticar($correo, $clave) );
         if ( $this->conexion->numFilas() == 1 ) {
             $resultado = $this->conexion->extraer();
             $this->id = $resultado[0];
@@ -63,9 +73,9 @@ class Medico extends Persona {
         }
     }
 
-	function consultar() {
+	function consultar($id) {
 		$this->conexion->abrir();
-		$this->conexion->ejecutar($this->medicoDAO->consultar());
+		$this->conexion->ejecutar($this->medicoDAO->consultar($id));
 		$resultado = $this->conexion->extraer();
 		$this->nombre = $resultado[0];
 		$this->apellido = $resultado[1];

@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hospital`
 --
-use hospital;
+DROP SCHEMA IF EXISTS `hospital` ;
+CREATE SCHEMA IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8 ;
+USE `hospital` ;
 
 -- --------------------------------------------------------
 
@@ -55,6 +57,7 @@ CREATE TABLE `cita` (
   `idcita` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
+  `estadoCita` INT NOT NULL,
   `medico_idmedico` int(11) NOT NULL,
   `paciente_idpaciente` int(11) NOT NULL,
   `consultorio_idconsultorio` int(11) NOT NULL
@@ -64,10 +67,10 @@ CREATE TABLE `cita` (
 -- Volcado de datos para la tabla `cita`
 --
 
-INSERT INTO `cita` (`idcita`, `fecha`, `hora`, `medico_idmedico`, `paciente_idpaciente`, `consultorio_idconsultorio`) VALUES
-(1, '2020-03-13', '03:15:00', 1, 4, 1),
-(2, '2020-03-13', '03:20:00', 3, 1, 3),
-(3, '2020-03-13', '03:30:00', 2, 3, 2);
+INSERT INTO `cita` (`idcita`, `fecha`, `hora`, `estadoCita`, `medico_idmedico`, `paciente_idpaciente`, `consultorio_idconsultorio`) VALUES
+(1, '2020-03-13', '03:15:00', 1, 1, 4, 1),
+(2, '2020-03-13', '03:20:00', 0, 3, 1, 3),
+(3, '2020-03-13', '03:30:00', 1, 2, 3, 2);
 
 -- --------------------------------------------------------
 

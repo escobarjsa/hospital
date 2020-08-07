@@ -35,7 +35,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="crearPdf.php" target="_blank">Todos los pacientes</a> <a
 						class="dropdown-item" href="citasPdf.php" target="_blank">Citas actuales</a>
-						<!-- class="dropdown-item" href="citasPdf.php" target="_blank">Historia Clinica</a> -->
+						<a class="dropdown-item" href="ReporteClinicoPdf.php" target="_blank">Historia Clinica</a>
 
 				</div></li>
 

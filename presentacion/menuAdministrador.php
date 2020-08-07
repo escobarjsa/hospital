@@ -25,6 +25,8 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultaTodosPAcientes.php") ?>">Todos los pacientes</a>
                     <a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Filtrar paciente</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Reporte Clinico</a>
+
 				</div></li>
 
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
@@ -33,6 +35,8 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="crearPdf.php" target="_blank">Todos los pacientes</a> <a
 						class="dropdown-item" href="citasPdf.php" target="_blank">Citas actuales</a>
+						<!-- class="dropdown-item" href="citasPdf.php" target="_blank">Historia Clinica</a> -->
+
 				</div></li>
 
 			<li class="nav-item"><a class="nav-link" href="index.php">Salida</a>

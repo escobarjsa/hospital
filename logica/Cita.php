@@ -6,6 +6,7 @@ class Cita {
     private $idcita;
     private $fecha;
     private $hora;
+    private $estadoCita;
     private $medico_idmedico;
     private $paciente_idpaciente;
     private $consultorio_idconsultorio;
@@ -24,6 +25,10 @@ class Cita {
         return $this -> hora;
     }
 
+    function getEstadoCita() {
+        return $this -> estadoCita;
+    }
+
     function getMedico() {
         return $this -> medico_idmedico;
     }
@@ -36,10 +41,11 @@ class Cita {
         return $this -> consultorio_idconsultorio;
     }
 
-    function Cita ($idcita="", $fecha="", $hora="", $medico_idmedico="", $paciente_idpaciente="", $consultorio_idconsultorio="") {
+    function Cita ( $idcita = '', $fecha = '', $hora = '', $estadoCita = '', $medico_idmedico = '', $paciente_idpaciente = '', $consultorio_idconsultorio = '' ) {
         $this -> idcita = $idcita;
         $this -> fecha = $fecha;
         $this -> hora = $hora;
+        $this -> estadoCita = $estadoCita;
         $this -> medico_idmedico = $medico_idmedico ;
         $this -> paciente_idpaciente = $paciente_idpaciente;
         $this -> consultorio_idconsultorio = $consultorio_idconsultorio;
@@ -66,9 +72,10 @@ class Cita {
         $this -> idcita = $resultado[0];
         $this -> fecha = $resultado[1];
         $this -> hora = $resultado[2];
-        $this -> medico_idmedico = $resultado[3];
-        $this -> paciente_idpaciente = $resultado[4];
-        $this -> consultorio_idconsultorio = $resultado[5];
+        $this -> estadoCita = $resultado[3];
+        $this -> medico_idmedico = $resultado[4];
+        $this -> paciente_idpaciente = $resultado[5];
+        $this -> consultorio_idconsultorio = $resultado[6];
         $this -> conexion -> cerrar();
     }
 
@@ -78,7 +85,7 @@ class Cita {
         $resultados = array();
         $i = 0;
         while( ( $registro = $this -> conexion -> extraer() ) != null ) {
-            $resultados[$i] = new Cita( $registro[0], $registro[1], $registro[2], $registro[3], $registro[4], $registro[5] );
+            $resultados[$i] = new Cita( $registro[0], $registro[1], $registro[2], $registro[3], $registro[4], $registro[5], $registro[6] );
             $i++;
         }
         $this -> conexion -> cerrar();

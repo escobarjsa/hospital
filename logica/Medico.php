@@ -18,14 +18,12 @@ class Medico extends Persona {
 
 	function __construct()
 	{
-		error_log("constructorMedico");
 		$this->conexion = new Conexion();
 		$this->medicoDAO = new MedicoDAO();
 	}
 
 	function Medico($id, $nombre, $apellido, $correo, $clave, $tarjetaprofesional, $especialidad_idespecialidad) 
 	{
-		error_log("constructorMedico SUPER");
 		parent::__construct($id, $nombre, $apellido, $correo, $clave);
 		$this->tarjetaprofesional = $tarjetaprofesional;
 		$this->especialidad_idespecialidad = $especialidad_idespecialidad;
@@ -60,7 +58,6 @@ class Medico extends Persona {
 	function autenticar($correo, $clave) 
 	{
 		$this->conexion->abrir();
-		error_log("1");
         $this->conexion->ejecutar( $this->medicoDAO->autenticar($correo, $clave) );
         if ( $this->conexion->numFilas() == 1 ) {
             $resultado = $this->conexion->extraer();

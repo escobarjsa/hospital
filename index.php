@@ -25,7 +25,6 @@ require 'logica/Paciente.php';
 
 <body>
     <?php
-
 if (isset($_GET["pid"])) {
     $pid = base64_decode($_GET["pid"]);
     if (isset($_GET["nos"]) || (!isset($_GET["nos"]) && (isset($_SESSION['id'])))) {

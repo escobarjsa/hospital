@@ -4,6 +4,7 @@ session_start();
 require 'logica/Persona.php';
 require 'logica/Administrador.php';
 require 'logica/Paciente.php';
+require 'logica/Cita.php';
 $pid = base64_decode($_GET["pid"]);
 if ($_SESSION['id'] != "") {
     include $pid;

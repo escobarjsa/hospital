@@ -23,9 +23,10 @@
 				href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Ver </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultaTodosPAcientes.php") ?>">Todos los pacientes</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultaTodosPacientes.php") ?>">Todos los pacientes</a>
                     <a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Filtrar paciente</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Reporte Clinico</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/Citas/ConsultaCitasAdmin.php") ?>">Citas</a>
 
 				</div></li>
 

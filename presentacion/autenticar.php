@@ -2,7 +2,7 @@
 include 'logica/Medico.php';
 $correo = $_POST["correo"];
 $clave = $_POST["clave"];
-$paciente = new Paciente("", "", "", $correo, $clave);
+$paciente = new Paciente("", "", "", $correo, $clave, "", "", "", "", "");
 $administrador = new Administrador("", "", "", $correo, $clave);
 error_log("correo: " . $correo . ", clave: " . $clave);
 $medico = new Medico();

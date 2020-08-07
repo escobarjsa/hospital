@@ -41,7 +41,9 @@ class PacienteDAO {
                 where idpaciente=" . $this->id;
     }
 
-    function consultar() {
+    function consultar() 
+    {
+        error_log("consulta paciente: " . $this->id);
         return "SELECT nombre, apellido, correo, cedula, telefono, direccion, foto, estado
                 FROM paciente
                 WHERE idpaciente =" . $this->id;

@@ -1,53 +1,52 @@
 <?php
 
-class CitaDAO {
+class CitaDAO 
+{
 
-    private $idcita;
-    private $fecha;
-    private $hora;
-    private $estadoCita;
-    private $medico_idmedico;
-    private $paciente_idpaciente;
-    private $consultorio_idconsultorio;
-
-    function CitaDAO( $idcita = '', $fecha = '', $hora = '', $estadoCita = '', $medico_idmedico = '', $paciente_idpaciente = '', $consultorio_idconsultorio = '' ) {
-        $this -> idcita = $idcita;
-        $this -> fecha = $fecha;
-        $this -> hora = $hora;
-        $this -> estadoCita = $estadoCita;
-        $this -> medico_idmedico = $medico_idmedico ;
-        $this -> paciente_idpaciente = $paciente_idpaciente;
-        $this -> consultorio_idconsultorio = $consultorio_idconsultorio;
+    function __construct()
+    {
+        
     }
 
-    function registrar() {
+    function registrar($fecha, $hora, $idMedico, $idPaciente, $idConsultorio) {
         return "insert into cita
                 (fecha, hora, estadoCita, medico_idmedico, paciente_idpaciente, consultorio_idconsultorio)
-                values ('" . $this->fecha . "', '" . $this->hora . "', " . $this->estadoCita . "', ". $this->medico_idmedico . ', ' . $this->paciente_idpaciente . ', ' . $this->consultorio_idconsultorio . ')';
+                values ('" . $fecha . "', '" . $hora . "', '". $idMedico . ', ' . $idPaciente . ', ' . $idConsultorio . ')';
     }
 
-    function actualizar() {
+    function actualizar($fecha, $hora, $idMedico, $idPaciente, $idConsultorio, $idCita) 
+    {
+        error_log("update cita set
+        fecha = '" . $fecha . "',
+        hora='" . $hora . "',
+        medico_idmedico=" . $idMedico . ",
+        paciente_idpaciente=" . $idPaciente . ",
+        consultorio_idconsultorio=" . $idConsultorio . "
+        where idcita=" . $idCita);
         return "update cita set
-                fecha = '" . $this -> fecha . "',
-                hora='" . $this -> hora . "',
-                estadoCita = '" . $this ->  estadoCita . "',
-                medico_idmedico=" . $this -> medico_idmedico . ",
-                paciente_idpaciente=" . $this -> paciente_idpaciente . ",
-                consultorio_idconsultorio=" . $this -> consultorio_idconsultorio . ",
-                where idcita=" . $this -> id;
+                fecha = '" . $fecha . "',
+                hora='" . $hora . "',
+                medico_idmedico=" . $idMedico . ",
+                paciente_idpaciente=" . $idPaciente . ",
+                consultorio_idconsultorio=" . $idConsultorio . " 
+                where idcita=" . $idCita;
     }
 
-    function consultar() {
-        return "select fecha, hora, estadoCita, medico_idmedico,  paciente_idpaciente,  consultorio_idconsultorio
+    function consultar($id) {
+        return "select fecha, hora, medico_idmedico,  paciente_idpaciente,  consultorio_idconsultorio
                 from cita
-                where idcita =" . $this -> id;
+                where idcita =" . $id;
     }
 
     function consultarTodos() {
-        return "select idcita, fecha, hora, estadoCita, medico.nombre,  paciente.nombre,  consultorio.nombre
-                from cita,medico,paciente,consultorio
-                where medico.idmedico= medico_idmedico and paciente.idpaciente= paciente_idpaciente and consultorio.idconsultorio= consultorio_idconsultorio
-                order by fecha";
+        return "select * from cita order by fecha";
+    }
+
+    function filtroCita($filtro) {
+        // CONCAT hace de que se pueda hacer una consulta usando nombre y apellido al tiempo, no separado
+        return "SELECT idpaciente, nombre, apellido, correo, estado, foto
+				FROM paciente
+				WHERE nombre LIKE '%" . $filtro . "%' OR apellido LIKE '%" . $filtro . "%' OR CONCAT(nombre, ' ', apellido) LIKE '%" . $filtro . "%'";
     }
 }
 

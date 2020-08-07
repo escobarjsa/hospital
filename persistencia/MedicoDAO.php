@@ -15,7 +15,7 @@ class MedicoDAO {
         
     }
 
-    function MedicoDAO( $id = '', $nombre = '', $apellido = '', $correo = '', $clave = '', $tarjetaprofesional = '', $especialidad_idespecialidad = '' ) {
+    function MedicoDAO( $id, $nombre, $apellido, $correo, $clave, $tarjetaprofesional, $especialidad_idespecialidad) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
@@ -33,7 +33,6 @@ class MedicoDAO {
 
     function autenticar($pCorreo, $pClave) 
     {
-        error_log("correo: " . $pCorreo . ", clave: " . $pClave);
         return "SELECT idmedico
                 FROM medico
                 WHERE correo = '" . $pCorreo . "' and clave = '" . $pClave . "'";
@@ -48,7 +47,8 @@ class MedicoDAO {
                 where idmedico=" . $this -> id;
     }
 
-    function consultar($id) {
+    function consultar($id) 
+    {
         return "select nombre, apellido, correo,  tarjetaprofesional,  especialidad_idespecialidad
                 from medico
                 where idmedico =" . $id;

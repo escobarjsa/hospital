@@ -1,7 +1,7 @@
 <?php
 $administrador = new Administrador($_SESSION['id']);
 $administrador->consultar();
-$paciente = new Paciente($_GET["idPaciente"]);
+$paciente = new Paciente($_GET["idPaciente"],"","","","","","","","","");
 $paciente->consultar();
 if (isset($_POST["actualizar"])) {
     $nombre = $_POST["nombre"];
@@ -9,7 +9,7 @@ if (isset($_POST["actualizar"])) {
     $cedula = $_POST["cedula"];
     $telefono = $_POST["telefono"];
     $direccion = $_POST["direccion"];
-    $paciente = new Paciente($_GET["idPaciente"], $nombre, $apellido, "", "", $cedula, "", $telefono, $direccion);
+    $paciente = new Paciente($_GET["idPaciente"], $nombre, $apellido, "", "", $cedula, "", $telefono, $direccion, "");
     $paciente->actualizar();
 }
 include 'presentacion/menuAdministrador.php';

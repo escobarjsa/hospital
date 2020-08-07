@@ -1,5 +1,5 @@
 <?php
-$paciente = new Paciente();
+$paciente = new Paciente("","","","","","","","","","");
 if (isset($_POST["filtro"])) {
     $filtro = $_POST["filtro"];
     $pacientes = $paciente->filtroPaciente($filtro);

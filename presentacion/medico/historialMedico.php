@@ -1,3 +1,4 @@
+
 <?php
 $medico = new Medico( $_SESSION['id'] );
 $medico -> consultar();
@@ -7,7 +8,7 @@ $solicitud = new Solicitud( $_GET['idSolicitud'] );
 $solicitud -> consultar();
 
 $paciente = new Paciente( $solicitud -> getPaciente() );
-$paciente -> consultarTodo();
+$paciente -> consultarTodos();
 $fecha = date( 'Y-m-d' );
 $error = 0;
 if ( isset( $_POST['generar'] ) ) {

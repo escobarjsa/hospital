@@ -40,7 +40,7 @@ include 'presentacion/administrador/menuAdministrador.php';
 								echo "<td>" . $v->getTarjetaProfesional() . "</td>";
 								echo "<td>" . $v->getEspecialidad_Idespecialidad() . "</td>";
 								echo "<td>" . "
-                                           <a href='indexAjax.php?pid=" . base64_encode("modalMedico.php") . "&idMedico=" . $v->getId() . "' data-toggle='modal' data-target='#modalVeterinario' >
+                                           <a href='indexAjax.php?pid=" . base64_encode("modalMedico.php") . "&idMedico=" . $v->getId() . "' data-toggle='modal' data-target='#modalMedico' >
                                                 <span class='fas fa-eye' data-toggle='tooltip' class='tooltipLink' data-placement='left' data-original-title='Ver Detalles' ></span> </a>
                                            <a class='fas fa-pencil-ruler' href='index.php?pid=" . base64_encode("presentacion/medico/actualizarMedico.php") . "&idMedico=" . $v->getId() . "' data-toggle='tooltip' data-placement='left' title='Actualizar'> </a>
                                    </td>";

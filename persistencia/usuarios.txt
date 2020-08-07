@@ -1,9 +1,10 @@
 administrador
-correo: jonathan@admin.com
-pass: 12345
 
 correo: admin@admin.com
 pass: admin
+
+correo: jonathan@admin.com
+pass: 12345
 _________________________________
 Paciente
 correo: pedro@paciente.com
@@ -17,4 +18,17 @@ pass: lex
 
 correo: juan@paciente.com
 pass: juan
+_________________________________
+Medico
+Diego
+correo: 1@1.com
+pass: 1
+
+Paula
+correo: 2@2.com
+pass: 2
+
+Juan
+correo: 3@3.com
+pass: 3
 _________________________________

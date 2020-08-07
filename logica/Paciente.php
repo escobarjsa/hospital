@@ -31,12 +31,12 @@ class Paciente extends Persona {
         return $this->foto;
     }
 
-    function Paciente()
-    {
-        
-    }
+    //   function Paciente()
+    // {
+    //
+    //  }
 
-    function __construct( $id, $nombre, $apellido, $correo, $clave, $cedula, $estado, $telefono, $direccion, $foto) {
+    function __construct( $id = '', $nombre = '', $apellido = '', $correo = '', $clave = '', $cedula = '', $estado = '', $telefono = '', $direccion = '', $foto = '' ) {
         parent::__construct( $id, $nombre, $apellido, $correo, $clave );
         $this->cedula = $cedula;
         $this->estado = $estado;

@@ -2,8 +2,17 @@
 require_once 'logica/Cita.php';
 require_once 'logica/Medico.php';
 require_once 'logica/Paciente.php';
-$administrador = new Administrador($_SESSION['id']);
-$administrador->consultar();
+if($_GET["rol"]=="admin")
+{
+	$administrador = new Administrador($_SESSION['id']);
+	$administrador->consultar();
+	include 'presentacion/menuAdministrador.php';
+}
+else
+{
+	include 'presentacion/medico/menuMedico.php';
+}
+
 $cita = new Cita($_GET["idCita"],"","","","","","");
 $cita->consultar();
 $paciente = new Paciente($cita->getPaciente(),"","","","","","","","","");
@@ -21,7 +30,6 @@ if (isset($_POST["actualizar"]))
     $citaNueva = new Cita($cita->getIdcita(), $fecha, $hora, $medico, $paciente, $consultorio);
     $citaNueva->actualizar();
 }
-include 'presentacion/menuAdministrador.php';
 ?>
 	<div class="container">
 		<div class="row">
@@ -55,7 +63,7 @@ include 'presentacion/menuAdministrador.php';
 								<input type="number" name="consultorio" class="form-control" placeholder="consultorio" required="required" value="<?php echo $cita->getConsultorio(); ?>">
 							</div>
 							<button type="submit" name="actualizar" class="btn btn-primary">Actualizar</button>
-							<a class="btn btn-light" href="<?php echo "index.php?pid=" . base64_encode("presentacion/Citas/ConsultaCitasAdmin.php") ?>" role="button">Volver</a>
+							<a class="btn btn-light" href="<?php echo "index.php?pid=" . base64_encode("presentacion/Citas/ConsultaCitasAdmin.php") . "&rol=" . $_GET["rol"] ?>" role="button">Volver</a>
 						</form>
 					</div>
 				</div>

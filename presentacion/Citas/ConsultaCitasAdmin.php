@@ -1,8 +1,17 @@
 <?php
-$administrador = new Administrador($_SESSION['id']);
-$administrador->consultar();
+if($_GET["rol"]=="admin")
+{
+    $administrador = new Administrador($_SESSION['id']);
+    $administrador->consultar();
 
-include 'presentacion/menuAdministrador.php';
+    include 'presentacion/menuAdministrador.php';
+}
+else
+{
+    $medico = new Medico();
+    $medico->consultar($_SESSION['id']);
+    include 'presentacion/medico/menuMedico.php';
+}
 ?>
 
 
@@ -27,7 +36,9 @@ include 'presentacion/menuAdministrador.php';
             var link = $(e.relatedTarget);
             $(this).find(".modal-content").load(link.attr("href"));
         });
-        <?php echo "var ruta = \"indexAjax.php?pid=" . base64_encode("presentacion/Citas/filtroCitas.php") . "\";"; ?>
+        <?php 
+        error_log("rol: " . $_GET["rol"]);
+        echo "var ruta = \"indexAjax.php?pid=" . base64_encode("presentacion/Citas/filtroCitas.php") . "&rol=" . $_GET["rol"] . "\";"; ?>
         $("#tabla").load(ruta);
 
 </script>

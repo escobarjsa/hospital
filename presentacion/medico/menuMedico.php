@@ -10,9 +10,16 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+			href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false"> Ver </a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultaTodosPacientes.php") ?>">Todos los pacientes</a>
+				<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Filtrar paciente</a>
+				<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Reporte Clinico</a>
+				<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/Citas/ConsultaCitasAdmin.php") ?>&rol=medico">Citas</a>
 
-			<li class="nav-item"><a class="nav-link" href="index.php">Salida</a>
-			</li>
+			</div></li>
 		</ul>
 		<span class="navbar-text">
             Medico <?php echo $medico->getEspecialidad_Idespecialidad() . " : " . $medico->getNombre() . " " . $medico->getApellido() ?> </span>

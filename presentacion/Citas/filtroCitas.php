@@ -44,15 +44,16 @@ foreach ($citas as $c)
     echo "<td>" . $c->getConsultorio() . "</td>";
     // Se codifica la url del modal para evitar mostrarla y se asegura la url, en la pagina del modal toca decodificar idCita para que el servidor lo pueda leer
     echo "<td>" . "<a href='indexAjax.php?pid=" . base64_encode("modalCita.php") . "&idCita =" . base64_encode($c->getIdCita()) . "' data-toggle='modal' data-target='#modalCita' ><span class='fas fa-eye' data-toggle='tooltip' class='tooltipLink' data-placement='left' data-original-title='Ver Detalles' ></span> </a>
-								<a class='fas fa-pencil-ruler' href='index.php?pid=" . base64_encode("presentacion/Citas/actualizarCita.php") . "&idCita=" . $c->getIdCita() . "' data-toggle='tooltip' data-placement='top' title='Actualizar'> </a>";
+								<a class='fas fa-pencil-ruler' href='index.php?pid=" . base64_encode("presentacion/Citas/actualizarCita.php") . "&idCita=" . $c->getIdCita() . "&rol=" . $_GET["rol"] . "' data-toggle='tooltip' data-placement='top' title='Actualizar'> </a>";
     echo "</tr>";
 }
-echo "<tr><td colspan='9'>" . count($citas) . " registros encontrados</td></tr>"?>
+echo "<tr><td colspan='9'>" . count($citas) . " registros encontrados</td></tr>";
 
-            </tbody>
 
-        </table>
-        <?php if (count($citas) > 0 && isset($filtro)) {?>
+    echo "</tbody>";
+    echo "</table>";
+        echo "<a class='btn btn-outline-success' href='index.php?pid=" . base64_encode("presentacion/Citas/CrearCita.php") . "&rol=" . $_GET["rol"] . "' role='button'>Crear</a>";
+         if (count($citas) > 0 && isset($filtro)) {?>
 
             <form action="crearPdf.php" method="POST" target="_blank">
                 <input type="hidden" name="filtro" value="<?php echo $_POST["filtro"]; ?>">

@@ -26,7 +26,7 @@
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultaTodosPacientes.php") ?>">Todos los pacientes</a>
                     <a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Filtrar paciente</a>
 					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php") ?>">Reporte Clinico</a>
-					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/Citas/ConsultaCitasAdmin.php") ?>">Citas</a>
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/Citas/ConsultaCitasAdmin.php") ?>&rol=admin">Citas</a>
 
 				</div></li>
 

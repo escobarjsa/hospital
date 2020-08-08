@@ -7,14 +7,16 @@ class reporteClinicoDAO {
     private $tratamiento;
     private $observaciones;
     private $paciente;
+    private $idCita;
 
-    function reporteClinicoDAO( $id = '', $fecha = '', $diagnostico = '', $tratamiento = '', $observaciones = '', $paciente = '' ) {
+    function reporteClinicoDAO( $id = '', $fecha = '', $diagnostico = '', $tratamiento = '', $observaciones = '', $paciente = '', $idCita = '' ) {
         $this -> id = $id;
         $this -> fecha = $fecha;
         $this -> diagnostico = $diagnostico;
         $this -> tratamiento = $tratamiento;
         $this -> observaciones = $observaciones;
         $this -> paciente = $paciente;
+        $this-> idCita = $idCita;
     }
 
     function registrar() {

@@ -146,9 +146,16 @@ CREATE TABLE `historia_clinica` (
 --
 
 INSERT INTO `medico` (`idmedico`, `nombre`, `apellido`, `correo`, `clave`, `tarjetaprofesional`, `especialidad_idespecialidad`) VALUES
-(1, 'Diego', 'Fernando', '1@1.com', '1', 'Tarjeta Profesional', 1),
-(2, 'Paula', 'Leon', '2@2.com', '2', 'Tarjeta Profesional', 2),
-(3, 'Juan', 'Santos', '3@3.com', '3', 'Tarjeta Profesional', 3);
+(1, 'Diego', 'Fernando', 'Diego@paciente.com', '1', 'Tarjeta Profesional', 1),
+(2, 'Paula', 'Leon', 'paula@paciente.com', '2', 'Tarjeta Profesional', 2),
+(3, 'Carlos', 'Figueredo', 'carlos@paciente.com', '3', 'Tarjeta Profesional', 2),
+(4, 'Luis', 'Rodriguez', 'luis@paciente.com', '4', 'Tarjeta Profesional', 3),
+(5, 'maurico', 'Fernandez', 'maurio@paciente.com', '5', 'Tarjeta Profesional', 1),
+(6, 'Hector', 'Leon', 'hector@paciente.com', '6', 'Tarjeta Profesional', 3),
+(7, 'Geraldine', 'Correa', 'geraldine@paciente.com', '7', 'Tarjeta Profesional', 2),
+(8, 'Catherine', 'Paez', 'catherine@paciente.com', '8', 'Tarjeta Profesional', 1),
+(9, 'Leidy', 'Puentes', 'leidy@paciente.com', '9', 'Tarjeta Profesional', 2),
+(10, 'Juan', 'Santos', 'juan@paciente.com', '10', 'Tarjeta Profesional', 1);
 
 -- --------------------------------------------------------
 

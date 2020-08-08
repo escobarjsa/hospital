@@ -8,9 +8,10 @@ class reporteClinico {
     private $diagnostico;
     private $tratamiento;
     private $observaciones;
-    // private $paciente;
+    private $paciente;
     private $reporteClinicoDAO;
     private $conexion;
+    private $idCita;
 
     /**
     * @return  <string, mixed>
@@ -52,13 +53,21 @@ class reporteClinico {
         return $this->observaciones;
     }
 
-    //   /**
-    //   * @return string
-    //   */
+    /**
+    * @return string
+    */
 
-    //   public function getPaciente() {
-    //       return $this->paciente;
-    //   }
+    public function getPaciente() {
+        return $this->paciente;
+    }
+
+    /**
+    * @return string
+    */
+
+    public function getIdCita() {
+        return $this->idCita;
+    }
 
     /**
     * @param Ambigous <string, mixed> $id
@@ -100,24 +109,33 @@ class reporteClinico {
         $this->observaciones = $observaciones;
     }
 
-    //   /**
-    //  * @param string $paciente
-    //  */
+    /**
+    * @param string $paciente
+    */
 
-    // public function setPaciente( $paciente ) {
-    //     $this->paciente = $paciente;
-    //   }
+    public function setPaciente( $paciente ) {
+        $this->paciente = $paciente;
+    }
 
-    function reporteClinico( $id = '', $fecha = '', $diagnostico = '', $tratamiento = '', $observaciones = '' ) {
+    /**
+    * @param string $idCita
+    */
+
+    public function setIdCita( $idCita ) {
+        $this->idCita = $idCita;
+    }
+
+    function reporteClinico( $id = '', $fecha = '', $diagnostico = '', $tratamiento = '', $observaciones = '', $paciente = '', $idCita = '' ) {
         //$paciente = '' ) {
         $this->id = $id;
         $this->fecha = $fecha;
         $this->diagnostico = $diagnostico;
         $this->tratamiento = $tratamiento;
         $this->observaciones = $observaciones;
-        //$this -> paciente = $paciente;
+        $this -> paciente = $paciente;
+        $this-> idCita = $idCita;
         $this->conexion = new Conexion();
-        $this->reporteClinicoDAO = new reporteClinicoDAO( $id, $fecha, $diagnostico, $tratamiento, $observaciones );
+        $this->reporteClinicoDAO = new reporteClinicoDAO( $id, $fecha, $diagnostico, $tratamiento, $observaciones, $paciente, $idCita );
         //$paciente );
     }
 

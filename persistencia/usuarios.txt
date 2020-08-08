@@ -21,14 +21,43 @@ pass: juan
 _________________________________
 Medico
 Diego
-correo: 1@1.com
+correo: Diego@paciente.com
 pass: 1
 
 Paula
-correo: 2@2.com
+correo: paula@paciente.com
 pass: 2
 
-Juan
-correo: 3@3.com
+Paula
+correo: carlos@paciente.com
 pass: 3
+
+Paula
+correo: paula@paciente.com
+pass: 4
+
+maurio
+correo: maurio@paciente.com
+pass: 5
+
+hector
+correo: hector@paciente.com
+pass: 6
+
+geraldine
+correo: geraldine@paciente.com
+pass: 7
+
+catherin
+correo: catherine@paciente.com
+pass: 8
+
+Leidy
+correo: leidy@paciente.com
+pass: 9
+
+Juan
+correo: juan@paciente.com
+pass: 10
+
 _________________________________

@@ -35,10 +35,16 @@ class reporteClinicoDAO {
                 FROM especialidad";
     }
 
+    // function consultarTodosPorPaciente() {
+    //      return "SELECT idreporte_clinico, fecha, diagnostico, tratamiento, observaciones
+ //               FROM reporte_clinico
+  //              WHERE paciente_idpaciente=".$this ->paciente.' Order by fecha';
+    //  }
+
     function consultarTodosPorPaciente() {
-        return "SELECT idreporte_clinico, fecha, diagnostico, tratamiento, observaciones
-                FROM reporte_clinico
-                WHERE paciente_idpaciente=".$this ->paciente.' Order by fecha';
+        return "SELECT r.* from reporte_clinico r 
+        INNER JOIN cita c on c.idCita = r.idCita 
+        WHERE c.idPaciente = 1";
     }
 }
 

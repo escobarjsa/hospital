@@ -11,6 +11,8 @@ if($_GET["rol"]=="admin")
 }
 else
 {
+    $medico = new Medico();
+    $medico->consultar($_SESSION['id']);
 	include 'presentacion/medico/menuMedico.php';
 }
 if (isset($_POST["crear"])) 

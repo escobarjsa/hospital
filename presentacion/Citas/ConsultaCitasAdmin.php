@@ -1,4 +1,5 @@
 <?php
+require_once 'logica/Medico.php';
 if($_GET["rol"]=="admin")
 {
     $administrador = new Administrador($_SESSION['id']);
